@@ -96,12 +96,12 @@
 /*後台 左側欄 樣式覆蓋 結束*/
 #sidebar-left .sidebar-menu > li > a {
   padding: 10px 15px;
-  font-size: 22px;
+  font-size: 20px;
   color: #fff;
 }
 #sidebar-left .sidebar-menu ul li a {
-  font-size: 20px;
-  padding: 12px 0 12px 22px;
+  font-size: 18px;
+  padding: 10px 0 12px 22px;
   color: #ccc;
 }
 #sidebar-left .sidebar-menu ul li a:hover {
@@ -113,6 +113,9 @@
 #sidebar-left .sidebar-menu > li > a > span:hover{
   color: #fff;
 }
+#sidebar-left .sidebar-menu > li > ul:after{
+  top: 40px;
+}
 /*後台 左側欄 樣式覆蓋 結束*/
 
 /*後台 index table 樣式覆蓋*/
@@ -121,16 +124,27 @@
   font-size: 16px;
 }
 .table-dark .btn.btn-default{
-  color: #eee !important;
-  border-color: #666 !important;
-  background: #777;
+  color: #333 !important;
+  border-color: #888 !important;
+  background: #F3F3F3;
+  transition:.3s;
 }
 .table-dark .btn-default.btn-push{
-  box-shadow: 0 6px #666;
+  box-shadow: 0 0 #fff;
 }
 .table-dark .btn-default.btn-push:hover{
-  box-shadow: 0 4px #666;
-  top: 2px;
+  box-shadow: 0 0 rgba(255,255,255,0);
+  top: 0;
+  background: #e3e3e3;
+  color: #333 !important;
+}
+.table-dark .btn-danger.btn-push{
+  box-shadow: 0 0 #666;
+  transition:.3s;
+}
+.table-dark .btn-danger.btn-push:hover{
+  box-shadow: 0 0 rgba(255,255,255,0);
+  top: 0;
 }
 .table-dark thead tr th {
   background-color: #555 !important;
@@ -145,13 +159,29 @@
 #datatable-dom_wrapper table tr:hover td{
   background: #e3e3e3;
 }
+.table-dark tr:last-child{
+  border-bottom: 1px solid #e5e5e5;
+}
 /*後台 index table 樣式覆蓋 結束*/
+
+/*後台 按鈕樣式 覆蓋*/
+.well .btn-default{
+  background: #F3F3F3;
+  color: #333 !important;
+  border-color: #888 !important;
+}
+.panel-body .btn-default{
+  background: #F3F3F3;
+  color: #333 !important;
+  border-color: #888 !important;
+}
+/*後台 按鈕樣式 覆蓋 結束*/
 
 /*後台 分頁按鈕*/
 .page_form form{
   position: relative;
   float: left;
-  padding: 7px 12px;
+  padding: 5px 12px;
   line-height: 1.42857143;
   text-decoration: none;
   color: #337ab7;
@@ -201,4 +231,5 @@
 }
 
 /*後台 下拉式多選選單 結束*/
+
 

@@ -14,25 +14,25 @@
 <% attributes.each do |attribute| -%>
   <div class="form-group">
 <% if attribute.password_digest? -%>
-  <%%= f.label :password, t 'admin.password', :class => 'col-sm-3 control-label' %>
-      <div class="col-sm-7">
+  <%%= f.label :password, t 'admin.password', :class => 'col-sm-1 control-label' %>
+      <div class="col-sm-10">
         <%%= f.password_field :password, t 'admin.password', :class => 'form-control' %>
       </div>
   </div>
   <div>
-    <%%= f.label :password_confirmation, t 'admin.password_confirmation', :class => 'col-sm-3 control-label' %>
-    <div class="col-sm-7">
+    <%%= f.label :password_confirmation, t 'admin.password_confirmation', :class => 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
       <%%= f.password_field :password_confirmation, t 'admin.password_confirmation', :class => 'form-control' %>
     </div>
 <% else -%>
   <%- if attribute.reference? -%>
-    <%%= f.label :<%= attribute.column_name %>, t('admin.<%= singular_table_name.gsub("admin_", "") %>.<%= attribute.column_name %>'), :class => 'col-sm-3 control-label' %>
-    <div class="col-sm-7">
+    <%%= f.label :<%= attribute.column_name %>, t('admin.<%= singular_table_name.gsub("admin_", "") %>.<%= attribute.column_name %>'), :class => 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
       <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %>, :class => 'form-control', :required => true %>
     </div>
   <%- else -%>
-    <%%= f.label :<%= attribute.name %>, t('admin.<%= singular_table_name.gsub("admin_", "") %>.<%= attribute.name %>'), :class => 'col-sm-3 control-label' %>
-    <div class="col-sm-7">
+    <%%= f.label :<%= attribute.name %>, t('admin.<%= singular_table_name.gsub("admin_", "") %>.<%= attribute.name %>'), :class => 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
       <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'form-control', :required => true %>
     </div>
   <%- end -%>
@@ -40,7 +40,7 @@
   </div>
 <% end -%>
 <div class="form-group">
-  <div class="col-sm-offset-3 col-sm-7">
+  <div class="col-sm-offset-1 col-sm-10">
     <%%= f.submit "#{t('admin.submit')}", :class => 'btn btn-primary' %>
     <%%= link_to t('admin.cancel'), admins_<%= index_helper %>_path, :class => 'btn btn-default' %>
   </div>

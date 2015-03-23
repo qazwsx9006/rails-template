@@ -144,8 +144,8 @@ directory 'partials', 'app/views/partials', :force => true
 
 
 # sacffold gen
-generate('scaffold site_block key:string content:text note:string') # site blocks
-rake 'db:migrate'
+# generate('scaffold_controller site_block key:string content:text note:string') # site blocks
+# rake 'db:migrate'
 
 ## Route
 route "root 'page#index'"
