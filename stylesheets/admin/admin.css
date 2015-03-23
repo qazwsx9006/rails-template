@@ -1,0 +1,204 @@
+@charset "UTF-8";
+/*後台 ckeditor 預覽按鈕*/
+.btn-preview{
+  color: #F0F2F4;
+  background:#217CB6;
+  margin-top: 5px;
+}
+.btn-preview:hover{
+  background:#213C85;
+}
+/*後台 ckeditor 預覽按鈕 結束*/
+
+/*後台 條件過濾/搜尋 表單*/
+.search-form{
+  max-width: 0;
+  position: relative;
+  left: 5px;
+  transition:.3s;
+  overflow: auto;
+}
+.search-form.search_form_show{
+  max-width: 230px;
+}
+.search-form .search-title{
+  text-align: center;
+  background: #666;
+  padding: 10px 0;
+  color: #fff;
+}
+.search-form ul{
+  padding: 10px 0;
+  background: #eee;
+  border: 1px solid #ddd;
+  position: relative;
+  max-height: 250px;
+  overflow: hidden;
+  transition: 1s .5s;
+}
+.search-form ul:focus,.search-form ul:hover{
+  transition: .3s;
+  max-height: 1000px;
+}
+.search-form ul:after{
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: -webkit-linear-gradient(rgba(255,255,255,0),rgba(255,255,255,1));
+}
+.search-form li{
+  list-style: none;
+  margin-bottom: 10px;
+}
+.search-form li:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+ .search-form li label{
+  width: 100%;
+}
+.search-form .col-center{
+  text-align: center;
+}
+.search-form li div{
+  width: 94%;
+}
+.search-form input[type="text"]{
+  width: 85%;
+}
+.search-form .search-btn{
+  text-align: center;
+}
+.search-form .search-btn .btn{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.search-form .search-btn .btn input[type="submit"]{
+  color: #fff !important;
+}
+.search-form-btn{
+  cursor: pointer;
+  font-size: 16px;
+}
+.search-form-btn i{
+  margin-right: 10px;
+}
+.ui-datepicker-trigger{
+  cursor: pointer;
+}
+/*後台 條件過濾/搜尋 表單 結束*/
+
+/*後台 左側欄 樣式覆蓋 結束*/
+#sidebar-left .sidebar-menu > li > a {
+  padding: 10px 15px;
+  font-size: 22px;
+  color: #fff;
+}
+#sidebar-left .sidebar-menu ul li a {
+  font-size: 20px;
+  padding: 12px 0 12px 22px;
+  color: #ccc;
+}
+#sidebar-left .sidebar-menu ul li a:hover {
+  color: #fff;
+}
+#sidebar-left .sidebar-menu > li > a > span{
+  color: #ccc;
+}
+#sidebar-left .sidebar-menu > li > a > span:hover{
+  color: #fff;
+}
+/*後台 左側欄 樣式覆蓋 結束*/
+
+/*後台 index table 樣式覆蓋*/
+.table-dark{
+  color:#111;
+  font-size: 16px;
+}
+.table-dark .btn.btn-default{
+  color: #eee !important;
+  border-color: #666 !important;
+  background: #777;
+}
+.table-dark .btn-default.btn-push{
+  box-shadow: 0 6px #666;
+}
+.table-dark .btn-default.btn-push:hover{
+  box-shadow: 0 4px #666;
+  top: 2px;
+}
+.table-dark thead tr th {
+  background-color: #555 !important;
+  border-color: #777 #777 #666 !important;
+  color: #fff;
+}
+.table-dark tfoot tr th {
+  background-color: #555 !important;
+  border-color: #666 #777 #777 !important;
+  color: #fff;
+}
+#datatable-dom_wrapper table tr:hover td{
+  background: #e3e3e3;
+}
+/*後台 index table 樣式覆蓋 結束*/
+
+/*後台 分頁按鈕*/
+.page_form form{
+  position: relative;
+  float: left;
+  padding: 7px 12px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  color: #337ab7;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  margin-left: -1px;
+}
+.page_form input{
+  width: 50px;
+}
+.page_form .page_form_submit{
+  display: none;
+}
+/*後台 分頁按鈕 結束*/
+
+/*後台 datetimpicker 寬度調整*/
+.bootstrap-datetimepicker-widget.dropdown-menu{
+  width: 21em !important;
+}
+/*後台 datetimpicker 寬度調整 結束*/
+
+/*後台 form 下拉式搜尋選單*/
+.chosen-container-single .chosen-single span{
+  color: #333;
+}
+.chosen-container-single .chosen-single div:before{
+  font-family: FontAwesome;
+  content:"\f0dc" ;
+  float: right;
+  color: #000;
+  margin-right: 5px;
+}
+/*後台 form 下拉式搜尋選單 結束*/
+
+/*後台 下拉式多選選單*/
+.chosen-container-multi .chosen-choices li.search-choice a.search-choice-close{
+  background: none;
+  text-decoration: none;
+}
+.chosen-container-multi .chosen-choices li.search-choice a.search-choice-close:after{
+  content:'X';
+  color:#777;
+  font-weight: 900;
+}
+.chosen-container-multi .chosen-choices li.search-choice a.search-choice-close:hover:after{
+  color:#333;
+}
+
+/*後台 下拉式多選選單 結束*/
+

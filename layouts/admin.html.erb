@@ -16,55 +16,30 @@
     <![endif]-->
   </head>
   <body>
+    <%= render 'partials/admin_header_bar' %>
+    <%= render 'partials/admin_left_bar' %>
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/admin">Dashboard</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link1</a></li>
-            <li><a href="#">Link2</a></li>
-            <li><a href="#">Link3</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Sign out", destroy_admin_session_path %></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
+    <div id="page-content">
+      <div class="body-content animated fadeIn">
+        <div class="row">
+          <% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>
+          <% if flash[:alert] %><div class='alert alert-warning'><%= alert %></div><% end %>
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <%= yield %>
+          </div>
+        </div><!--/row-->
+
+        <footer>
+          <p style="text-align: center;">&copy; <%= Settings.name %> &nbsp;&nbsp; Designed by 四點設計</p>
+        </footer>
       </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>
-        <% if flash[:alert] %><div class='alert alert-warning'><%= alert %></div><% end %>
-        <div class="col-xs-12 col-sm-6 col-md-8">
-          <%= yield %>
-        </div>
-      </div><!--/row-->
-
-      <footer>
-        <p>&copy; <%= Settings.name %></p>
-      </footer>
-
     </div> <!-- /container -->
+
 
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "admin" %>
+    <%= yield(:script)  %>
   </body>
 </html>

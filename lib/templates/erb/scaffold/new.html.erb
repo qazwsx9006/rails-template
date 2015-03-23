@@ -1,5 +1,12 @@
-<div class="page-header">
+<div class="header-content">
   <h1><%%= t 'admin.new' %> <%%= t('admin.<%= singular_table_name %>.<%= singular_table_name %>') %></h1>
 </div>
+<div>
+  <p style="clear:both;"></p>
+</div>
 
-<%%= render 'form' %>
+<div class="panel shadow">
+  <div class="panel-body">
+    <%%= render 'form' %>
+  </div>
+</div>

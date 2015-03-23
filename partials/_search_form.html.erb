@@ -1,0 +1,76 @@
+<li>
+  <%= f.label :"#{@search_key}", '內容', :class => 'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= f.text_field :"#{@search_key}", style: "width:100%;" %>
+  </div>
+</li>
+
+<% @search_not_text_key.each do |column| %>
+  <li>
+      <% case column.last %>
+      <% when :datetime %>
+        <%= f.label column.first, t("admin.#{@search.result.name.underscore.downcase}.#{column.first}"), :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10 col-center">
+
+          <input type="text" class="datepicker" name="f[<%= column.first.to_s %>][]" value="<%= params[:f][column.first.to_sym].try(:first) if params[:f] %>">
+          ~<br/>
+          <input type="text" class="datepicker" name="f[<%= column.first.to_s %>][]" value="<%= params[:f][column.first.to_sym].try(:last) if params[:f] %>">
+
+        </div>
+      <% when :date %>
+        <%= f.label column.first, t("admin.#{@search.result.name.underscore.downcase}.#{column.first}"), :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10 col-center">
+
+          <input type="text" class="datepicker" name="f[<%= column.first.to_s %>][]" value="<%= params[:f][column.first.to_sym].try(:first) if params[:f] %>">
+          ~<br/>
+          <input type="text" class="datepicker" name="f[<%= column.first.to_s %>][]" value="<%= params[:f][column.first.to_sym].try(:last) if params[:f] %>">
+
+        </div>
+      <% when :boolean %>
+        <%= f.label column.first, t("admin.#{@search.result.name.underscore.downcase}.#{column.first}"), :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-10">
+
+          <%= select_tag "f[#{column.first.to_s}]", options_for_select([['請選擇', ""], ['是', 1], ['否', 0]], selected: (params[:f][column.first.to_s] if params[:f]) )  %>
+
+        </div>
+      <% when :integer %>
+        <% if column.first.to_s.include?('_id') && (klass = column_to_model(column.first.to_s)) %>
+          <% if klass.column_names.include?("name") %>
+            <%= f.label column.first, t("admin.#{@search.result.name.underscore.downcase}.#{column.first.to_s.split('_id').first}"), :class => 'col-sm-2 control-label' %>
+            <div class="col-sm-10">
+              <%= f.collection_select column.first, klass.all, :id, :name, ( params[:f].blank? || params[:f][column.first].blank? ) ? {include_blank: "請選擇"} :{include_blank: "請選擇", selected: params[:f][column.first]}, {:name => "f[#{column.first}]"} %>
+            </div>
+          <% elsif klass.column_names.include?("title") %>
+            <%= f.label column.first, t("admin.#{@search.result.name.underscore.downcase}.#{column.first.to_s.split('_id').first}"), :class => 'col-sm-2 control-label' %>
+            <div class="col-sm-10">
+              <%= f.collection_select column.first, klass.all, :id, :title, ( params[:f].blank? || params[:f][column.first].blank? ) ? {include_blank: "請選擇"} :{include_blank: "請選擇", selected: params[:f][column.first]}, {:name => "f[#{column.first}]"} %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+  </li>
+<% end %>
+
+<% if content_for? :search_form %>
+  <%= yield :search_form %>
+<% end %>
+
+<li class="search-btn">
+  <%= f.submit "#{t('admin.search')}", :class => "btn btn-primary" %>
+  <%= link_to "清除", request.path, :class => "btn btn-default"  %>
+</li>
+
+<% content_for :script do %>
+  <script>
+    $(function() {
+      //$( ".datepicker" ).datepicker();
+      $(".datepicker").datepicker({
+        showOn: "both",
+        buttonImage: "<%= image_url 'icon_datepicker.gif' %>",
+        buttonImageOnly: true,
+        buttonText: "Select date",
+        dateFormat: "yy-mm-dd"
+      });
+    });
+  </script>
+<% end %>

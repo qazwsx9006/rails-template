@@ -29,6 +29,7 @@ end
 copy_file 'helpers/application_helper.rb', 'app/helpers/application_helper.rb', :force => true
 copy_file 'initializers/settings.rb', 'config/initializers/settings.rb', :force => true
 copy_file 'initializers/assets.rb', 'config/initializers/assets.rb', :force => true
+copy_file 'initializers/form.rb', 'config/initializers/form.rb', :force => true
 
 ## Generator
 generate(:controller, "page index")
@@ -46,17 +47,30 @@ gem 'ransack'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'mysql2'
-gem 'ckeditor_rails'
+gem 'ckeditor'
 gem 'kaminari'
 gem 'simple_form'
 gem 'google-analytics-rails'
 gem 'activerecord-session_store'
+gem 'jquery-ui-rails'
+
+#datetimepicker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
+gem 'font-awesome-rails'
+
 gem_group :development, :test do
   gem 'brakeman', require: false
   gem "rack-livereload"
   gem 'guard-livereload', require: false
   gem 'guard-rails', require: false
   gem 'meta_request'
+end
+#協助開發的錯誤提示工具
+gem_group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'annotate','2.5.0'
 end
 
 ## Admin
@@ -67,6 +81,7 @@ generate('devise Admin')
 generate('devise:views')
 generate('simple_form:install', '--bootstrap')
 generate('kaminari:config')
+generate('ckeditor:install', '--orm=active_record --backend=carrierwave')
 rake 'db:migrate'
 
 # add default admin account
@@ -91,7 +106,7 @@ gsub_file 'config/initializers/devise.rb', /config.sign_out_via = :delete/, "con
 
 # cancel devise admin registration and customize controller
 gsub_file 'app/models/admin.rb', /devise :database_authenticatable, :registerable,/, "devise :database_authenticatable, #:registerable,"
-gsub_file 'config/routes.rb', /devise_for :admins/, "get 'admin' => 'admin#index'\n\tdevise_for :admins, :skip => [:registration], controllers: { sessions: \"admins/sessions\" }\n\tscope '/admin' do\n\tend\n\t"
+gsub_file 'config/routes.rb', /devise_for :admins/, "get 'admins' => 'admin#index'\n\tdevise_for :admins, :skip => [:registration], controllers: { sessions: \"admins/sessions\" }\n\tscope '/admin' do\n\tend\n\t"
 
 # Copy the custom controller
 copy_file 'controllers/admins/sessions_controller.rb', 'app/controllers/admins/sessions_controller.rb', :force => true
