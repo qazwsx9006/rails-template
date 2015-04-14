@@ -3,9 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #= require jquery
 #= require jquery_ujs
-#= require jquery-ui/datepicker
 #= require bootstrap-sprockets
 #= require_directory ./admin
 #= require ckeditor/init
 #= require moment
+#= require bootstrap-datepicker/core
+#= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-TW.js
 #= require bootstrap-datetimepicker

@@ -63,14 +63,7 @@
 <% content_for :script do %>
   <script>
     $(function() {
-      //$( ".datepicker" ).datepicker();
-      $(".datepicker").datepicker({
-        showOn: "both",
-        buttonImage: "<%= image_url 'icon_datepicker.gif' %>",
-        buttonImageOnly: true,
-        buttonText: "Select date",
-        dateFormat: "yy-mm-dd"
-      });
+      $('.datepicker').datepicker({ format: 'yyyy-mm-dd' });
     });
   </script>
 <% end %>

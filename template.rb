@@ -73,6 +73,7 @@ gem 'jquery-ui-rails'
 
 #datetimepicker
 gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap-datepicker-rails'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'font-awesome-rails'
 
