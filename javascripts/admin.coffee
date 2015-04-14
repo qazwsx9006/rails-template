@@ -10,3 +10,9 @@
 #= require bootstrap-datepicker/core
 #= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-TW.js
 #= require bootstrap-datetimepicker
+#= require select2
+#
+
+# select2
+$ ->
+  $('select').select2()

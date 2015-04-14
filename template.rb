@@ -70,6 +70,7 @@ gem 'simple_form'
 gem 'google-analytics-rails'
 gem 'activerecord-session_store'
 gem 'jquery-ui-rails'
+gem 'select2-rails'
 
 #datetimepicker
 gem 'momentjs-rails', '>= 2.9.0'
