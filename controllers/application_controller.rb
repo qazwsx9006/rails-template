@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
   before_filter :set_root_url
+  before_filter :set_fb
 
   protected
 
@@ -22,6 +23,14 @@ class ApplicationController < ActionController::Base
       "admin"
     else
       "application"
+    end
+  end
+  def set_fb
+    if !request.path.include?("admin")
+      @meta ||= {}
+      @fb_og_images=[]
+      @fb_og = FbMetum.find_by_key(request.path).as_json || {}
+      @fb_og["image"]="#{root_url[0..-2]}#{@fb_og["image"]["url"]}" if @fb_og["image"]
     end
   end
 

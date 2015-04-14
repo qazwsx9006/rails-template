@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+  <%= render 'partials/meta' %>
+  <body style="overflow:hidden">
+    <%= render "partials/header" %>
+    <%= yield %>
+    <%= render "partials/footer" %>
+    <!-- Load JS siles -->
+    <%= javascript_include_tag('application.js') %>
+    <%= yield :script %>
+  </body>
+</html>

@@ -10,9 +10,19 @@
 
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js" type="text/javascript"></script>
+    <!-- Le HTML5 shim, for IE6-9 support of HTML elements -->
+
+    <!--[if lte IE 9]>
+      <%= stylesheet_link_tag "ie/admin_ie_1" %>
+      <%= stylesheet_link_tag "ie/admin_ie_2" %>
+      <%= stylesheet_link_tag "ie/admin_ie_3" %>
+      <%= stylesheet_link_tag "ie/admin_ie_4" %>
+      <%= stylesheet_link_tag "ie/admin_ie_5" %>
+      <%= stylesheet_link_tag "ie/admin_ie_6" %>
+      <%= stylesheet_link_tag "ie/admin_ie_7" %>
+      <%= stylesheet_link_tag "ie/admin_ie_8" %>
+      <%= stylesheet_link_tag "ie/admin_ie_9" %>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js" type="text/javascript"></script>
     <![endif]-->
   </head>
   <body>

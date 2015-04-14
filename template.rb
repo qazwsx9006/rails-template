@@ -2,7 +2,24 @@
 run 'bundle install'
 
 name = ask("What is the name of this site ?")
-create_file "config/settings.yml", "name: '#{name}'"
+create_file "config/settings.yml", "name: '#{name}'\n"
+
+append_file 'config/settings.yml', <<-CODE
+description: #{name}
+keys: #{name}
+
+fb_og:
+  description: #{name}
+  title: #{name}
+  image: #{name}
+CODE
+# append_file 'config/settings.yml', "description: #{name}"
+# append_file 'config/settings.yml', "keys: #{name}"
+# append_file 'config/settings.yml', "fb_og: "
+# append_file 'config/settings.yml', "\tdescription: #{name}"
+# append_file 'config/settings.yml', "\ttitle: #{name}"
+# append_file 'config/settings.yml', "\timage: #{name}"
+
 
 # Create gemset
 run "rvm gemset create #{name}"
@@ -70,7 +87,7 @@ end
 gem_group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'annotate','2.5.0'
+  gem 'annotate'
 end
 
 ## Admin
@@ -141,6 +158,7 @@ directory 'stylesheets', 'app/assets/stylesheets'
 directory 'javascripts', 'app/assets/javascripts', :force => true
 directory 'layouts', 'app/views/layouts', :force => true
 directory 'partials', 'app/views/partials', :force => true
+directory 'views/devise/sessions', 'app/views/devise/sessions', :force => true
 
 
 # sacffold gen

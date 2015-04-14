@@ -1,0 +1,55 @@
+<div id="sign-wrapper" style="min-height: 981px;">
+
+  <%= simple_form_for(resource, :html=> { class: 'new_admin sign-in form-horizontal shadow rounded no-overflow' }, as: resource_name, url: session_path(resource_name), class: 'asasas') do |f| %>
+
+    <div class="sign-header">
+        <div class="form-group">
+            <div class="sign-text">
+                <span>登入</span>
+            </div>
+        </div><!-- /.form-group -->
+    </div><!-- /.sign-header -->
+
+    <div class="sign-body">
+        <div class="form-group">
+            <div class="input-group input-group-lg rounded no-overflow">
+                  <%= f.text_field :email, required: false, autofocus: true, class: "form-control input-sm string email optional", type: "email", placeholder: '帳號'  %>
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            </div>
+        </div><!-- /.form-group -->
+        <div class="form-group">
+            <div class="input-group input-group-lg rounded no-overflow">
+                  <%= f.text_field :password, required: false, autofocus: true, class: "form-control input-sm password optional", type: "password", placeholder: '密碼'  %>
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            </div>
+        </div><!-- /.form-group -->
+    </div><!-- /.sign-body -->
+
+    <div class="sign-footer">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="ckbox ckbox-theme">
+                        <input class="boolean optional" type="checkbox" value="1" name="admin[remember_me]" id="admin_remember_me">
+                        <label for="admin_remember_me" class="rounded">Remember me</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <%= render "devise/shared/links" %>
+                </div>
+            </div>
+        </div><!-- /.form-group -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-theme btn-lg btn-block no-margin rounded" id="login-btn">Sign In</button>
+        </div><!-- /.form-group -->
+    </div>
+
+  <% end %>
+
+</div>
+
+<style>
+  body{
+    background: #e9eaed;
+  }
+</style>
