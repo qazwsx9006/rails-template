@@ -57,7 +57,13 @@ generate(:controller, "admin index")
 gsub_file 'Gemfile', /gem 'turbolinks'/, "# gem 'turbolinks'"
 gsub_file 'app/assets/javascripts/application.js', /= require turbolinks/, " require turbolinks"
 
-gem 'haml'
+
+# Use for Front-End
+gem 'compass-rails','2.0.2'
+gem 'susy'
+gem 'font-awesome-rails'
+
+#gem 'haml'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'ransack'
@@ -76,7 +82,6 @@ gem 'select2-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
-gem 'font-awesome-rails'
 
 gem_group :development, :test do
   gem 'brakeman', require: false
@@ -93,7 +98,7 @@ gem_group :development do
 end
 
 ## Admin
-run 'bundle install'
+run 'bundle update'
 
 generate('devise:install')
 generate('devise Admin')
@@ -163,12 +168,25 @@ directory 'partials', 'app/views/partials', :force => true
 directory 'views/devise/sessions', 'app/views/devise/sessions', :force => true
 
 
+run 'rails g model fb_meta key:string description:string title:string image:string'
+run 'rails g scaffold_controller admins/fb_meta key:string description:string title:string image:string --model-name=Fb_meta'
+generate('annotate:install')
+
+run 'bundle install'
+run 'rake db:migrate'
+
 # sacffold gen
 # generate('scaffold_controller site_block key:string content:text note:string') # site blocks
 # rake 'db:migrate'
 
 ## Route
 route "root 'page#index'"
+route <<-CODE
+
+  namespace :admins do
+      resources :fb_meta
+  end
+CODE
 
 # Generate Guardfile
 run 'guard init'
