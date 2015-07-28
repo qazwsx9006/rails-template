@@ -59,13 +59,12 @@ gsub_file 'app/assets/javascripts/application.js', /= require turbolinks/, " req
 
 
 # Use for Front-End
-gem 'compass-rails','2.0.2'
-gem 'susy'
 gem 'font-awesome-rails'
+gem 'bootstrap-sass'
+# end
 
 #gem 'haml'
 gem 'devise'
-gem 'bootstrap-sass'
 gem 'ransack'
 gem 'carrierwave'
 gem 'mini_magick'

@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
 <!--[if IE 9]>         <html class="ie9"> <![endif]-->
-<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
-  <%= render 'partials/meta' %>
-  <body style="overflow:hidden">
-    <%= render "partials/header" %>
+<!--[if gt IE 9]><!--> <html lang="zh"> <!--<![endif]-->
+  <head>
+    <title> </title>
+    <meta name="description" content="">
+    <meta name="keywords" content=""/>
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=1024">
+    <!-- Use title if it's in the page YAML frontmatter -->
+    
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&amp;amp;subset=latin,latin-ext">
+    <%= stylesheet_link_tag "application" %>
+    <script type="text/javascript">
+       // 安插GA code
+    </script>
+    <!-- for FB -->
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:site_name" content=""/>
+    <link rel="canonical" href=""/>
+    <!--[if IE 8 ]> <link rel="stylesheet" href="/ie/ie.css">
+      <script src="/ie/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" href="/ie/ie.css">
+      <script src="/ie/html5.js"></script>
+    <![endif]-->
+  </head >
+
+  <body>
+    <%#= partial "header" %>
     <%= yield %>
-    <%= render "partials/footer" %>
-    <!-- Load JS siles -->
-    <%= javascript_include_tag('application.js') %>
+    <footer id="footer">
+      <div class="container">
+        <p>Footer</p>
+      </div>
+    </footer>
+    <%= javascript_include_tag "application" %>
     <%= yield :script %>
   </body>
 </html>

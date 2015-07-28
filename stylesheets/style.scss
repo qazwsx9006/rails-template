@@ -1,25 +1,5 @@
-@import 'compass/reset';
 @import 'base';
 @import 'layout';
+@import 'module';
+@import 'page';
 
-body {
-  font-family: Ubuntu, "Open Sans", Arial, 'HeitiTC', '微軟正黑體', 'Microsoft JhengHei', 'Microsoft YaHei', sans-serif;
-	margin: 0;
-	font-size: 14px;
-	background-color: #fff;
-	color: $text-color;
-	& > header {
-		padding-top: 1em;
-	}
-	& > main {
-		display: block;	// For IE9 and IE10
-	}
-	& > footer {
-		padding-top: 1em;
-		background-color: $light-gray;
-	}
-}
-
-h1 {
-	margin-top: 0;
-}
