@@ -59,8 +59,9 @@ gsub_file 'app/assets/javascripts/application.js', /= require turbolinks/, " req
 
 
 # Use for Front-End
-gem 'font-awesome-rails'
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+gem 'compass'
 # end
 
 #gem 'haml'
