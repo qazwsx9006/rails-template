@@ -6,20 +6,14 @@ create_file "config/settings.yml", "name: '#{name}'\n"
 
 append_file 'config/settings.yml', <<-CODE
 description: #{name}
-keys: #{name}
+keywords: #{name}
+author: #{name}
 
 fb_og:
   description: #{name}
   title: #{name}
   image: #{name}
 CODE
-# append_file 'config/settings.yml', "description: #{name}"
-# append_file 'config/settings.yml', "keys: #{name}"
-# append_file 'config/settings.yml', "fb_og: "
-# append_file 'config/settings.yml', "\tdescription: #{name}"
-# append_file 'config/settings.yml', "\ttitle: #{name}"
-# append_file 'config/settings.yml', "\timage: #{name}"
-
 
 # Create gemset
 run "rvm gemset create #{name}"
@@ -169,7 +163,7 @@ directory 'views/devise/sessions', 'app/views/devise/sessions', :force => true
 
 
 run 'rails g model fb_meta key:string description:string title:string image:string'
-run 'rails g scaffold_controller admins/fb_meta key:string description:string title:string image:string --model-name=Fb_meta'
+run 'rails g scaffold_controller admins/fb_meta key:string description:string title:string image:string --model-name=fb_meta'
 generate('annotate:install')
 
 run 'bundle install'
