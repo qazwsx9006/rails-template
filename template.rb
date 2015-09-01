@@ -71,6 +71,7 @@ gem 'google-analytics-rails'
 gem 'activerecord-session_store'
 gem 'jquery-ui-rails'
 gem 'select2-rails'
+gem 'slim-rails'
 
 #datetimepicker
 gem 'momentjs-rails', '>= 2.9.0'
@@ -141,8 +142,8 @@ gsub_file 'config/application.rb', /# config.time_zone = 'Central Time \(US & Ca
 # scaffold without scaffold.css
 gsub_file 'config/application.rb', /config.assets.version = '1.0'/, "config.assets.version = '1.0'\n    config.generators do |g|\n        g.stylesheets false\n    end"
 
-# scaffold without test
-gsub_file 'config/application.rb', /# config.i18n.default_locale = :de/, "config.i18n.default_locale = 'zh-TW'\n    config.generators.assets = false\n    config.generators.helper = false\n    config.generators.test_framework = false"
+# scaffold without test and only using erb as default template
+gsub_file 'config/application.rb', /# config.i18n.default_locale = :de/, "config.i18n.default_locale = 'zh-TW'\n    config.generators.assets = false\n    config.generators.helper = false\n    config.generators.test_framework = false\n    config.app_generators.template_engine = :erb"
 
 # add admin assets to production env
 gsub_file 'config/environments/production.rb', /# config.assets.precompile/, 'config.assets.precompile'
