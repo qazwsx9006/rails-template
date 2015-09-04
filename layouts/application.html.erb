@@ -3,6 +3,7 @@
 <!--[if IE 9]>         <html lang="zh-tw" class="ie9"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="zh-tw"> <!--<![endif]-->
   <head>
+    <title><%= content_for?(:title) ? yield(:title) : Settings.name %></title>
     <!-- for meta and FB -->
     <%= render 'partials/fb_meta' %>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
