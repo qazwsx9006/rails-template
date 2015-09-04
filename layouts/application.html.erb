@@ -3,10 +3,8 @@
 <!--[if IE 9]>         <html lang="zh-tw" class="ie9"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="zh-tw"> <!--<![endif]-->
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : Settings.name %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : Settings.description %>">
-    <meta name="keywords" content="<%= content_for?(:keywords) ? yield(:keywords) : Settings.keywords %>"/>
-    <meta name="author" content="<%= content_for?(:author) ? yield(:author) : Settings.author %>">
+    <!-- for meta and FB -->
+    <%= render 'partials/fb_meta' %>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <!-- Always force latest IE rendering engine or request Chrome Frame -->
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -19,14 +17,6 @@
     <script type="text/javascript">
        // 安插GA code
     </script>
-    <!-- for FB -->
-    <meta property="og:title" content=""/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:description" content=""/>
-    <meta property="og:site_name" content=""/>
-    <link rel="canonical" href=""/>
     <!--[if IE 8 ]> <link rel="stylesheet" href="/ie/ie.css">
       <script src="/ie/html5.js"></script>
     <![endif]-->
