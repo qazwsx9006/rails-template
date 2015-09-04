@@ -1,7 +1,4 @@
 <% begin %>
-  <meta name="description" content="<%= @meta["description"] || @fb_og["description"] || @fb_og["fb_description"] || fb_og_description(request.path) || Settings.description %>">
-  <meta name="keywords" content="<%= @meta["keys"] || @fb_og["keys"] || meta_keywords(request.path) || Settings.keys %>">
-
   <% if @fb_og["app_id"] %>
     <!--暫時沒有fb page-->
     <meta property="fb:app_id" content="id"/>
@@ -9,7 +6,7 @@
     <meta property="og:image:height" content="500"/>
   <% end %>
 
-  <meta property="og:title" content="<%= @fb_og["fb_title"] || @fb_og["title"] || @fb_og["name"] || fb_og_title(request.path) || Settings.fb_og["title"] %>"/>
+  <meta property="og:title" content="<%= @fb_og["fb_title"] || @fb_og["title"] || @fb_og["name"] || Settings.fb_og["title"] %>"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="<%= request.original_url %>"/>
 
@@ -25,7 +22,7 @@
     <meta property="og:image" content="<%= image_url(Settings.fb_og["image"]) %>"/>
   <% end %>
 
-  <meta property="og:description" content="<%= @fb_og["fb_description"] || @fb_og["description"] || @meta["description"] ||  fb_og_description(request.path) || Settings.fb_og["description"] %>"/>
+  <meta property="og:description" content="<%= @fb_og["fb_description"] || @fb_og["description"] || @meta["description"] || Settings.fb_og["description"] %>"/>
   <meta property="og:site_name" content="<%= Settings.name %>"/>
   <link rel="canonical" href="<%= request.original_url %>"/>
 

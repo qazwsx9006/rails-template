@@ -2,7 +2,7 @@
 run 'bundle install'
 
 name = ask("What is the name of this site ?")
-create_file "config/settings.yml", "name: '#{name}'\n"
+create_file "config/settings.yml", "name: #{name}\n"
 
 append_file 'config/settings.yml', <<-CODE
 description: #{name}
@@ -10,9 +10,11 @@ keywords: #{name}
 author: #{name}
 
 fb_og:
+  type: website
   description: #{name}
   title: #{name}
   image: #{name}
+  site_name: #{name}
 CODE
 
 # Create gemset

@@ -1,6 +1,10 @@
 <head>
+  <title><%= Settings.name %></title>
+  <meta name="description" content="<%= @meta["description"] || @fb_og["description"] || @fb_og["fb_description"] || Settings.description %>">
+  <meta name="keywords" content="<%= @meta["keys"] || @fb_og["keys"] || Settings.keywords %>">
+  <meta name="author" content="<%= Settings.author %>">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Concert</title>
+
 	<!-- Mobile Meta -->
   <meta name="viewport" content="width=1200, initial-scale=1, maximum-scale=1">
 
