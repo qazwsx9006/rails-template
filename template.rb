@@ -18,10 +18,10 @@ fb_og:
 CODE
 
 # Create gemset
-run "rvm gemset create #{name}"
+#run "rvm gemset create #{name}"
 
 # Add rvmrc file
-create_file ".rvmrc", "rvm #{RUBY_VERSION}@#{name}\n"
+#create_file ".rvmrc", "rvm #{RUBY_VERSION}@#{name}\n"
 
 ## Remove files
 # no require_tree
