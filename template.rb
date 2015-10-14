@@ -58,6 +58,7 @@ gsub_file 'app/assets/javascripts/application.js', /= require turbolinks/, " req
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'compass'
+gem 'autoprefixer-rails' # cross browser css prefix hack
 # end
 
 #gem 'haml'
