@@ -30,7 +30,6 @@ gsub_file 'app/assets/stylesheets/application.css', /= require_tree/, " require_
 inject_into_file 'app/assets/stylesheets/application.css', " *= require style\n", :after => " *= require_self\n"
 
 remove_file 'README.rdoc'
-remove_file 'public/favicon.ico'
 remove_file 'app/views/layouts/application.html.erb'
 
 ## Copy files
@@ -164,6 +163,7 @@ directory 'javascripts', 'app/assets/javascripts', :force => true
 directory 'layouts', 'app/views/layouts', :force => true
 directory 'partials', 'app/views/partials', :force => true
 directory 'views/devise/sessions', 'app/views/devise/sessions', :force => true
+directory 'views/admin', 'app/views/admin', :force => true
 
 
 run 'rails g model fb_meta key:string description:string title:string image:string'
