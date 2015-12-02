@@ -33,7 +33,14 @@
               <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %>, :class => 'form-control', :required => true %>
             <%- else -%>
               <%%= f.label :<%= attribute.name %>, t('admin.<%= singular_table_name.gsub("admin_", "") %>.<%= attribute.name %>') %>
-              <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'form-control', :required => true %>
+              <%- if attribute.field_type.to_s == 'check_box' -%>
+                <%%= f.label :<%= attribute.name %>, class: 'css-input css-checkbox css-checkbox-info' do %>
+                  <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+                  <span></span>
+                <%% end %>
+              <%- else -%>
+                <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'form-control', :required => true %>
+              <%- end -%>
             <%- end -%>
           </div>
         <% end -%>
