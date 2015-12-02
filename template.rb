@@ -163,6 +163,8 @@ directory 'javascripts', 'app/assets/javascripts', :force => true
 directory 'layouts', 'app/views/layouts', :force => true
 directory 'partials', 'app/views/partials', :force => true
 directory 'views/devise/sessions', 'app/views/devise/sessions', :force => true
+directory 'views/devise/passwords', 'app/views/devise/passwords', :force => true
+directory 'public/theme', 'public/theme', :force => true
 directory 'views/admin', 'app/views/admin', :force => true
 
 
@@ -195,6 +197,11 @@ append_file '.gitignore', <<-CODE
 *~
 *.swp
 .DS_Store
+/public/*
+
+# But not these files...
+!/public/theme
+!/public/fonts
 CODE
 
 # init

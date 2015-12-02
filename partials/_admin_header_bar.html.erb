@@ -1,69 +1,47 @@
-<header id="header">
-  <!-- Start header left -->
-  <div class="header-left">
-      <!-- Start offcanvas left: This menu will take position at the top of template header (mobile only). Make sure that only #header have the `position: relative`, or it may cause unwanted behavior -->
-      <div class="navbar-minimize-mobile left">
-          <i class="fa fa-bars"></i>
-      </div>
-      <!--/ End offcanvas left -->
-
-      <!-- Start navbar header -->
-      <div class="navbar-header">
-
-          <!-- Start brand -->
-          <a class="navbar-brand" href="/admins">
-              four point
-          </a><!-- /.navbar-brand -->
-          <!--/ End brand -->
-
-      </div><!-- /.navbar-header -->
-      <!--/ End navbar header -->
-
-      <div class="clearfix"></div>
-  </div><!-- /.header-left -->
-  <!--/ End header left -->
-
-  <!-- Start header right -->
-  <div class="header-right">
-      <!-- Start navbar toolbar -->
-      <div class="navbar navbar-toolbar">
-        <!-- Start left navigation -->
-        <ul class="nav navbar-nav navbar-left">
-
-            <!-- Start sidebar shrink -->
-            <li class="navbar-minimize">
-                <a href="javascript:void(0);" title="Minimize sidebar">
-                    <i class="fa fa-bars"></i>
-                </a>
-            </li>
-            <!--/ End sidebar shrink -->
-
-        </ul><!-- /.navbar-left -->
-        <!--/ End left navigation -->
-        <!-- Start right navigation -->
-        <ul class="nav navbar-nav navbar-right"><!-- /.nav navbar-nav navbar-right -->
-            <!-- Start profile -->
-            <li class="dropdown navbar-profile">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="meta">
-                        <span class="text hidden-xs hidden-sm text-muted">Admin</span>
-                        <span class="caret"></span>
-                    </span>
-                </a>
-                <!-- Start dropdown menu -->
-                <ul class="dropdown-menu animated flipInX">
-                    <li><a href="/admins/sign_out"><i class="fa fa-sign-out"></i>Logout</a></li>
+<!-- Header -->
+<header id="header-navbar" class="content-mini content-mini-full">
+    <!-- Header Navigation Right -->
+    <ul class="nav-header pull-right">
+        <li>
+            <div class="btn-group">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+                    <!-- <%#= current_admin.email %> name here -->
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li class="dropdown-header">Actions</li>
+                    <li>
+                        <a tabindex="-1" href="/admins/sign_out">
+                            <i class="si si-logout pull-right"></i>Log out
+                        </a>
+                    </li>
                 </ul>
-                <!--/ End dropdown menu -->
-            </li><!-- /.dropdown navbar-profile -->
-            <!--/ End profile -->
+            </div>
+        </li>
+        <li>
+            <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+            <!-- <button class="btn btn-default" data-toggle="layout" data-action="side_overlay_toggle" type="button">
+                <i class="fa fa-tasks"></i>
+            </button> -->
+        </li>
+    </ul>
+    <!-- END Header Navigation Right -->
 
-        </ul><!-- /.navbar-right -->
-        <!--/ End right navigation -->
-
-
-      </div><!-- /.navbar-toolbar -->
-      <!--/ End navbar toolbar -->
-  </div><!-- /.header-right -->
-  <!--/ End header left -->
+    <!-- Header Navigation Left -->
+    <ul class="nav-header pull-left">
+        <li class="hidden-md hidden-lg">
+            <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+            <button class="btn btn-default" data-toggle="layout" data-action="sidebar_toggle" type="button">
+                <i class="fa fa-navicon"></i>
+            </button>
+        </li>
+        <li class="hidden-xs hidden-sm">
+            <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+            <button class="btn btn-default" data-toggle="layout" data-action="sidebar_mini_toggle" type="button">
+                <i class="fa fa-ellipsis-v"></i>
+            </button>
+        </li>
+    </ul>
+    <!-- END Header Navigation Left -->
 </header>
+<!-- END Header -->

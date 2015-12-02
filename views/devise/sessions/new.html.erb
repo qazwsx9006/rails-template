@@ -1,55 +1,56 @@
-<div id="sign-wrapper" style="min-height: 981px;">
-
-  <%= simple_form_for(resource, :html=> { class: 'new_admin sign-in form-horizontal shadow rounded no-overflow' }, as: resource_name, url: session_path(resource_name), class: 'asasas') do |f| %>
-
-    <div class="sign-header">
-        <div class="form-group">
-            <div class="sign-text">
-                <span>登入</span>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+        <!-- Login Block -->
+        <div class="block block-themed animated fadeIn">
+            <div class="block-header bg-primary">
+                <ul class="block-options">
+                    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                        <li>
+                            <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+                        </li>
+                    <% end -%>
+                </ul>
+                <h3 class="block-title">登入</h3>
             </div>
-        </div><!-- /.form-group -->
-    </div><!-- /.sign-header -->
+            <div class="block-content block-content-full block-content-narrow">
 
-    <div class="sign-body">
-        <div class="form-group">
-            <div class="input-group input-group-lg rounded no-overflow">
-                  <%= f.text_field :email, required: false, autofocus: true, class: "form-control input-sm string email optional", type: "email", placeholder: '帳號'  %>
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            </div>
-        </div><!-- /.form-group -->
-        <div class="form-group">
-            <div class="input-group input-group-lg rounded no-overflow">
-                  <%= f.text_field :password, required: false, autofocus: true, class: "form-control input-sm password optional", type: "password", placeholder: '密碼'  %>
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            </div>
-        </div><!-- /.form-group -->
-    </div><!-- /.sign-body -->
+                <% if flash[:notice] %><div class='alert alert-warning'><%= notice %></div><% end %>
+                <% if flash[:alert] %><div class='alert alert-danger'><%= alert %></div><% end %>
 
-    <div class="sign-footer">
-        <div class="form-group">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="ckbox ckbox-theme">
-                        <input class="boolean optional" type="checkbox" value="1" name="admin[remember_me]" id="admin_remember_me">
-                        <label for="admin_remember_me" class="rounded">Remember me</label>
+                <!-- Login Form -->
+                <%= simple_form_for(resource, :html=> { class: 'js-validation-login form-horizontal push-30-t push-50', novalidate: 'novalidate' }, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="form-material form-material-primary floating">
+                                <%= f.text_field :email, required: true, autofocus: true, class: "form-control", type: "email" %>
+                                <label for="login-username">帳號</label>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <%= render "devise/shared/links" %>
-                </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div class="form-material form-material-primary floating">
+                                <%= f.text_field :password, required: true, autofocus: true, class: "form-control", type: "password" %>
+                                <label for="login-password">密碼</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label class="css-input switch switch-sm switch-primary">
+                                <input class="boolean optional" type="checkbox" value="1" name="admin[remember_me]" id="admin_remember_me"><span></span> Remember Me?
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <button class="btn btn-block btn-primary" type="submit"><i class="si si-login pull-right"></i> Log in</button>
+                        </div>
+                    </div>
+                <% end %>
+                <!-- END Login Form -->
             </div>
-        </div><!-- /.form-group -->
-        <div class="form-group">
-            <button type="submit" class="btn btn-theme btn-lg btn-block no-margin rounded" id="login-btn">Sign In</button>
-        </div><!-- /.form-group -->
+        </div>
+        <!-- END Login Block -->
     </div>
-
-  <% end %>
-
 </div>
-
-<style>
-  body{
-    background: #e9eaed;
-  }
-</style>

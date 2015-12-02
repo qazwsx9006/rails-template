@@ -1,23 +1,51 @@
-<div class="header-content">
-  <h1><%%= t('admin.show') %> <%%= t('admin.<%= singular_table_name %>.<%= singular_table_name %>') %></h1>
+<!-- Page Header -->
+<div class="content bg-gray-lighter hidden-print">
+    <div class="row items-push">
+        <div class="col-sm-7">
+            <h1 class="page-heading">
+              <%%= t('admin.<%= singular_table_name %>.<%= singular_table_name %>') %> <small><%%= t('admin.show') %></small>
+            </h1>
+        </div>
+    </div>
 </div>
+<!-- END Page Header -->
 
-<div>
-  <p style="clear:both;"></p>
+<!-- Page Content -->
+<div class="content content-boxed">
+    <!-- Invoice -->
+    <div class="block">
+        <div class="block-header">
+            <ul class="block-options">
+                <li>
+                    <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                </li>
+            </ul>
+        </div>
+        <div class="block-content block-content-narrow">
+            <!-- Table -->
+            <div class="table-responsive push-50">
+                <table class="table table-bordered table-hover">
+                    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+                      <tr>
+                        <th class="col-sm-2"><%%= t('admin.<%= singular_table_name %>.<%= attribute.name %>') %>:</th>
+                        <td><%%= @<%= singular_table_name %>.<%= attribute.name %> %></td>
+                      </tr>
+                    <% end -%>
+                </table>
+            </div>
+            <!-- END Table -->
+
+            <!-- Action -->
+            <hr class="hidden-print">
+            <div class="text-center push-30-t push-30 hidden-print">
+              <%%= link_to t('admin.back'), admins_<%= index_helper %>_path, :class => 'btn btn-default' %>
+              <%%= link_to t('admin.edit'), edit_admins_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn btn-default' %>
+              <%%= link_to t('admin.delete'), admins_<%= singular_table_name %>_path(@<%= singular_table_name %>), method: :delete, data: { confirm: t('admin.confirm_delete') }, :class => 'btn btn-danger' %>
+              <%%= link_to t('admin.new') + t('admin.<%= singular_table_name %>.<%= singular_table_name %>'), new_admins_<%= singular_table_name %>_path, :class => 'btn btn-primary' %>
+            </div>
+            <!-- END Action -->
+        </div>
+    </div>
+    <!-- END Invoice -->
 </div>
-
-<table class="table table-bordered table-striped table-hover">
-  <% attributes.reject(&:password_digest?).each do |attribute| -%>
-    <tr>
-      <th class="col-sm-2"><%%= t('admin.<%= singular_table_name %>.<%= attribute.name %>') %>:</th>
-      <td><%%= @<%= singular_table_name %>.<%= attribute.name %> %></td>
-    </tr>
-<% end -%>
-</table>
-
-<div class="well">
-  <%%= link_to t('admin.back'), admins_<%= index_helper %>_path, :class => 'btn btn-default' %>
-  <%%= link_to t('admin.edit'), edit_admins_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn btn-default' %>
-  <%%= link_to t('admin.delete'), admins_<%= singular_table_name %>_path(@<%= singular_table_name %>), method: :delete, data: { confirm: t('admin.confirm_delete') }, :class => 'btn btn-danger' %>
-  <%%= link_to t('admin.new') + t('admin.<%= singular_table_name %>.<%= singular_table_name %>'), new_admins_<%= singular_table_name %>_path, :class => 'btn btn-primary' %>
-</div>
+<!-- END Page Content -->

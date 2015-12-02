@@ -10,6 +10,9 @@
 
     <link rel="shortcut icon" href="/favicon.ico" />
 
+    <!-- Bootstrap and OneUI CSS framework -->
+    <%= stylesheet_link_tag "/theme/css/oneui.css", id: "css-main" %>
+
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js" type="text/javascript"></script>
@@ -17,24 +20,33 @@
   </head>
   <body>
 
-    <div class="container">
-      <div class="row">
-        <% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>
-        <% if flash[:alert] %><div class='alert alert-warning'><%= alert %></div><% end %>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <%= yield %>
+        <div class="content overflow-hidden">
+            <%= yield %>
         </div>
-      </div><!--/row-->
-
-      <footer>
-        <p>&copy; <%= Settings.name %></p>
-      </footer>
-
-    </div> <!-- /container -->
+        <div class="push-10-t text-center animated fadeInUp">
+            <small class="text-muted font-w600">&copy; <%= Settings.name %></small>
+        </div>
 
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
     <%= javascript_include_tag "admin" %>
+    <%= javascript_include_tag "/theme/js/core/jquery.scrollLock.min.js" %>
+    <%= javascript_include_tag "/theme/js/core/jquery.appear.min.js" %>
+    <%= javascript_include_tag "/theme/js/core/jquery.countTo.min.js" %>
+    <%= javascript_include_tag "/theme/js/core/jquery.placeholder.min.js" %>
+    <%= javascript_include_tag "/theme/js/core/js.cookie.min.js" %>
+    <%= javascript_include_tag "/theme/js/app.js" %>
+
+    <!-- Page JS Plugins -->
+    <%= javascript_include_tag "/theme/js/plugins/jquery-validation/jquery.validate.min.js" %>
+    <%= javascript_include_tag "/theme/js/plugins/jquery-validation/jquery.validate_message_zh_TW.js" %>
+
+    <!-- Page JS Code -->
+    <%= javascript_include_tag "/theme/js/pages/base_pages_login.js" %>
+    <%= javascript_include_tag "/theme/js/pages/base_pages_reminder.js" %>
+
+
   </body>
 </html>

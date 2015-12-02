@@ -21,3 +21,28 @@
     <%= next_page_tag unless current_page.last? %>
   </ul>
 <% end -%>
+
+<% if controller.class.name.start_with?('Admin') %>
+  <style>
+  .page_form_submit{
+    display: none;
+  }
+  #page{
+    height: 32px;
+    width: 32px;
+    text-align: center;
+  }
+  .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+    color: #5c90d2;
+    background-color: transparent;
+    -webkit-box-shadow: 0 2px #5c90d2;
+    box-shadow: 0 2px #5c90d2;
+  }
+  input[type=number]#page::-webkit-inner-spin-button,
+  input[type=number]#page::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+  }
+  </style>
+<% end %>

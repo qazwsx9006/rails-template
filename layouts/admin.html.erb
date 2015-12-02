@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-tw">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -10,39 +10,40 @@
 
     <link rel="shortcut icon" href="/favicon.ico" />
 
+    <%= stylesheet_link_tag "/theme/js/plugins/slick/slick.min.css" %>
+    <%= stylesheet_link_tag "/theme/js/plugins/slick/slick-theme.min.css" %>
+    <%= stylesheet_link_tag "/theme/css/oneui.css", id: 'css-main' %>
+    <%= yield(:stylesheet)  %>
+
     <!-- Le HTML5 shim, for IE6-9 support of HTML elements -->
 
     <!--[if lte IE 9]>
-      <%= stylesheet_link_tag "ie/admin_ie_1" %>
-      <%= stylesheet_link_tag "ie/admin_ie_2" %>
-      <%= stylesheet_link_tag "ie/admin_ie_3" %>
-      <%= stylesheet_link_tag "ie/admin_ie_4" %>
-      <%= stylesheet_link_tag "ie/admin_ie_5" %>
-      <%= stylesheet_link_tag "ie/admin_ie_6" %>
-      <%= stylesheet_link_tag "ie/admin_ie_7" %>
-      <%= stylesheet_link_tag "ie/admin_ie_8" %>
-      <%= stylesheet_link_tag "ie/admin_ie_9" %>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js" type="text/javascript"></script>
     <![endif]-->
   </head>
   <body>
-    <%= render 'partials/admin_header_bar' %>
-    <%= render 'partials/admin_left_bar' %>
+    <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+      <%#= render 'partials/side_overlay' %>
+      <%= render 'partials/admin_left_bar' %>
+      <%= render 'partials/admin_header_bar' %>
+      <!-- Main Container -->
+      <main id="main-container">
 
-    <div id="page-content">
-      <div class="body-content animated fadeIn">
         <div class="row">
           <% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>
           <% if flash[:alert] %><div class='alert alert-warning'><%= alert %></div><% end %>
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            <%= yield %>
-          </div>
         </div><!--/row-->
+        <%= yield %>
 
-        <footer>
-          <p style="text-align: center;">&copy; <%= Settings.name %> &nbsp;&nbsp; Designed by 四點設計</p>
-        </footer>
-      </div>
+      </main>
+
+      <!-- Footer -->
+      <footer id="page-footer" class="content-mini content-mini-full font-s12 bg-gray-lighter clearfix">
+          <div>
+            <p style="text-align: center;">&copy; <%= Settings.name %> &nbsp;&nbsp; Designed by 四點設計</p>
+          </div>
+      </footer>
+      <!-- END Footer -->
     </div> <!-- /container -->
 
 
@@ -50,6 +51,32 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "admin" %>
+
+    <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+    <%= javascript_include_tag "/theme/js/core/jquery.slimscroll.min.js" %>
+    <%= javascript_include_tag "/theme/js/core/jquery.scrollLock.min.js" %>
+    <%= javascript_include_tag "/theme/js/core/jquery.appear.min.js" %>
+    <%= javascript_include_tag "/theme/js/core/jquery.countTo.min.js" %>
+    <%= javascript_include_tag "/theme/js/core/jquery.placeholder.min.js" %>
+    <%= javascript_include_tag "/theme/js/core/js.cookie.min.js" %>
+    <%= javascript_include_tag "/theme/js/app.js" %>
+
+    <!-- Page JS Plugins -->
+    <%= javascript_include_tag "/theme/js/plugins/sparkline/jquery.sparkline.min.js" %>
+    <%= javascript_include_tag "/theme/js/plugins/easy-pie-chart/jquery.easypiechart.min.js" %>
+    <%= javascript_include_tag "/theme/js/plugins/slick/slick.min.js" %>
+
+    <!-- Page JS Code -->
+    <%= javascript_include_tag "/theme/js/pages/base_ui_widgets.js" %>
+    <script>
+        $(function() {
+            App.initHelpers(['slick', 'easy-pie-chart']);
+            $('.datetimepicker').datetimepicker();
+            $('.datepicker').datepicker({ format: 'yyyy-mm-dd' });
+        });
+    </script>
+
     <%= yield(:script)  %>
   </body>
 </html>
+

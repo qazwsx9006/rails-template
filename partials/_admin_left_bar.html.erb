@@ -1,137 +1,90 @@
-<div id="sidebar-left" class="sidebar-circle navbar navbar-default navbar-static-top" role="navigation">
+<!-- Sidebar -->
+<nav id="sidebar">
+    <!-- Sidebar Scroll Container -->
+    <div id="sidebar-scroll">
+        <!-- Sidebar Content -->
+        <!-- Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode -->
+        <div class="sidebar-content">
+            <!-- Side Header -->
+            <div class="side-header side-content bg-white-op">
+                <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
+                <button class="btn btn-link text-gray pull-right hidden-md hidden-lg" type="button" data-toggle="layout" data-action="sidebar_close">
+                    <i class="fa fa-times"></i>
+                </button>
+                <!-- Themes functionality initialized in App() -> uiHandleTheme() -->
+                <div class="btn-group pull-right">
+                    <button class="btn btn-link text-gray dropdown-toggle" data-toggle="dropdown" type="button">
+                        <i class="si si-drop"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right font-s13 sidebar-mini-hide">
+                        <li>
+                            <a data-toggle="theme" data-theme="default" tabindex="-1" href="javascript:void(0)">
+                                <i class="fa fa-circle text-default pull-right"></i> <span class="font-w600">Default</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="theme" data-theme="/theme/css/themes/amethyst.min.css" tabindex="-1" href="javascript:void(0)">
+                                <i class="fa fa-circle text-amethyst pull-right"></i> <span class="font-w600">Amethyst</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="theme" data-theme="/theme/css/themes/city.min.css" tabindex="-1" href="javascript:void(0)">
+                                <i class="fa fa-circle text-city pull-right"></i> <span class="font-w600">City</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="theme" data-theme="/theme/css/themes/flat.min.css" tabindex="-1" href="javascript:void(0)">
+                                <i class="fa fa-circle text-flat pull-right"></i> <span class="font-w600">Flat</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="theme" data-theme="/theme/css/themes/modern.min.css" tabindex="-1" href="javascript:void(0)">
+                                <i class="fa fa-circle text-modern pull-right"></i> <span class="font-w600">Modern</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="theme" data-theme="/theme/css/themes/smooth.min.css" tabindex="-1" href="javascript:void(0)">
+                                <i class="fa fa-circle text-smooth pull-right"></i> <span class="font-w600">Smooth</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <a class="h5 text-white" href="<%= admins_path %>">
+                    <i class="text-primary" style="font-size: 2.5rem;"><%= Settings.name[0].upcase %></i> <span class="h4 font-w600 sidebar-mini-hide"><%= Settings.name[1..-1] %></span>
+                </a>
+            </div>
+            <!-- END Side Header -->
 
-  <div class="sidebar-content">
-      <div class="media">
-          <a class="pull-left has-notif avatar" href="/admins">
-              <!-- <i class="online"></i> -->
-              <h1 class="media-heading"><span>Admin</span></h1>
-          </a>
-      </div>
-  </div>
+            <!-- Side Content -->
+            <div class="side-content">
+                <ul class="nav-main">
+                    <li>
+                        <a class="active" href="javascript:void(0);"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                    </li>
 
-  <ul class="sidebar-menu">
-    <li class="<%= 'active' if controller_name == 'admin' %>">
-        <a href="/admins">
-            <span class="icon"><i class="fa fa-home"></i></span>
-            <span class="text">Dashboard</span>
-            <% if controller_name == 'admin' %>
-              <span class="selected"></span>
-            <% end %>
-        </a>
-    </li>
+                    <li class="nav-main-heading"><span class="sidebar-mini-hide">group title</span></li>
+                    <li>
+                        <a class="active" href="javascript:void(0);"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">title</span></a>
+                    </li>
 
-    <li class="submenu <%= 'active' if controller_name == 'news' %>">
-        <a href="javascript:void(0);">
-            <span class="icon"><i class="fa fa-globe"></i></span>
-            <span class="text">網站資訊</span>
-            <span class="arrow"></span>
-            <% if controller_name == 'news' %>
-              <span class="selected"></span>
-            <% end %>
-        </a>
-        <ul>
-            <li><%= link_to "最新消息","javascript:void(0);" %></li>
-        </ul>
-    </li>
-
-    <% if false %>
-      <!-- 參考格式 -->
-      <li class="submenu active">
-        <a href="javascript:void(0);">
-            <span class="icon"><i class="fa fa-file-o"></i></span>
-            <span class="text">研討會</span>
-            <span class="arrow"></span>
-        </a>
-        <ul>
-            <li class="active"><%= link_to "研討會",admins_confs_path %></li>
-            <li><%= link_to "活動日程",admins_schedules_path %></li>
-            <li><%= link_to "報名資料",admins_joins_path %></li>
-        </ul>
-      </li>
-      <li class="submenu">
-        <a href="javascript:void(0);">
-            <span class="icon"><i class="fa fa-file-o"></i></span>
-            <span class="text">Pages</span>
-            <span class="arrow"></span>
-        </a>
-        <ul>
-            <li><a href="page-calendar.html">Calendar</a></li>
-            <li><a href="page-invoice.html">Invoice</a></li>
-            <li><a href="page-messages.html">Messages</a></li>
-            <li><a href="page-timeline.html">Timeline</a></li>
-            <li><a href="page-profile.html">Profile</a></li>
-            <li class="submenu">
-                <a href="javascript:void(0);">Search<span class="arrow"></span></a>
-                <ul>
-                    <li><a href="page-search-course.html">Courses</a></li>
+                    <li class="nav-main-heading"><span class="sidebar-mini-hide">group title</span></li>
+                    <li class="open">
+                      <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">title</span></a>
+                      <ul>
+                        <li>
+                          <a class="active" href="#">sub title</a>
+                        </li>
+                        <li>
+                          <a class="" href="#">sub title</a>
+                        </li>
+                      </ul>
+                    </li>
                 </ul>
-            </li>
-            <li class="submenu">
-                <a href="javascript:void(0);">Error <span class="arrow"></span></a>
-                <ul>
-                    <li><a href="page-error-403.html">Error 403</a></li>
-                    <li><a href="page-error-403-type-2.html">Error 403 Type 2</a></li>
-                    <li><a href="page-error-404.html">Error 404</a></li>
-                    <li><a href="page-error-404-type-2.html">Error 404 Type 2</a></li>
-                    <li><a href="page-error-500.html">Error 500</a></li>
-                    <li><a href="page-error-500-type-2.html">Error 500 Type 2</a></li>
-                </ul>
-            </li>
-            <li class="submenu">
-                <a href="javascript:void(0);">Account <span class="arrow"></span></a>
-                <ul>
-                    <li><a href="page-signin.html">Sign In</a></li>
-                    <li><a href="page-signup.html">Sign Up</a></li>
-                    <li><a href="page-lost-password.html">Lost password</a></li>
-                    <li><a href="page-lock-screen.html">Lock Screen</a></li>
-                </ul>
-            </li>
-        </ul>
-      </li>
-
-
-      <li class="sidebar-category">
-          <span>UI KIT</span>
-          <span class="pull-right"><i class="fa fa-magic"></i></span>
-      </li>
-
-
-      <li class="submenu active">
-          <a href="javascript:void(0);">
-              <span class="icon"><i class="fa fa-signal"></i></span>
-              <span class="text">Charts</span>
-              <span class="arrow"></span>
-              <span class="selected"></span>
-          </a>
-          <ul>
-              <li class="active"><a href="chart-flot.html">Flot</a></li>
-              <li><a href="chart-morris.html">Morris</a></li>
-              <li><a href="chart-chartjs.html">Chartjs</a></li>
-              <li><a href="chart-c3js.html">C3js</a></li>
-          </ul>
-      </li>
-
-      <li>
-          <a href="widget-blog.html">
-              <span class="icon"><i class="fa fa-pencil"></i></span>
-              <span class="text">Blog</span>
-              <span class="label label-info pull-right rounded">15</span>
-          </a>
-      </li>
-
-      <li class="sidebar-category">
-          <span><span class="hidden-sidebar-minimize">BLANKON</span> CORE</span>
-          <span class="pull-right"><i class="fa fa-coffee"></i></span>
-      </li>
-    <% end %>
-  </ul>
-  <%#
-  <div class="sidebar-footer hidden-xs hidden-sm hidden-md">
-      <a id="setting" class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Setting" data-original-title="" title=""><i class="fa fa-cog"></i></a>
-      <a id="fullscreen" class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Fullscreen" data-original-title="" title=""><i class="fa fa-desktop"></i></a>
-      <a id="lock-screen" class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Lock Screen" data-original-title="" title=""><i class="fa fa-lock"></i></a>
-      <a id="logout" class="pull-left" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" data-title="Logout" data-original-title="" title=""><i class="fa fa-power-off"></i></a>
-  </div>
-  %>
-
-</div>
+            </div>
+            <!-- END Side Content -->
+        </div>
+        <!-- Sidebar Content -->
+    </div>
+    <!-- END Sidebar Scroll Container -->
+</nav>
+<!-- END Sidebar -->

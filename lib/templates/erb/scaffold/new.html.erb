@@ -1,12 +1,30 @@
-<div class="header-content">
-  <h1><%%= t 'admin.new' %> <%%= t('admin.<%= singular_table_name %>.<%= singular_table_name %>') %></h1>
+<!-- Page Header -->
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-7">
+            <h1 class="page-heading">
+                <%%= t('admin.<%= singular_table_name %>.<%= singular_table_name %>') %> <small><%%= t('admin.action') %></small>
+            </h1>
+        </div>
+        <div class="col-sm-5 text-right hidden-xs">
+            <ol class="breadcrumb push-10-t">
+                <li></li>
+                <li><a class="link-effect" href="<%%= admins_<%= index_helper %>_path %>"><%%= t('admin.<%= singular_table_name %>.<%= singular_table_name %>') %></a></li>
+            </ol>
+        </div>
+    </div>
 </div>
-<div>
-  <p style="clear:both;"></p>
-</div>
+<!-- END Page Header -->
 
-<div class="panel shadow">
-  <div class="panel-body">
-    <%%= render 'form' %>
+<!-- Page Content -->
+<div class="content content-narrow">
+  <div class="block block-bordered">
+    <div class="block-header bg-gray-lighter">
+        <h3 class="block-title"><%%= t 'admin.new' %>></h3>
+    </div>
+    <div class="block-content">
+        <%%= render 'form' %>
+    </div>
   </div>
 </div>
+<!-- END Page Content -->
