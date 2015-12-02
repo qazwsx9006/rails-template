@@ -28,13 +28,9 @@
   </head >
 
   <body>
-    <%#= partial "header" %>
+    <%= partial "header" %>
     <%= yield %>
-    <footer id="footer">
-      <div class="container">
-        <p>Footer</p>
-      </div>
-    </footer>
+    <%= partial "footer" %>
     <%= javascript_include_tag "application" %>
     <%= yield :script %>
   </body>
