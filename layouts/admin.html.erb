@@ -29,9 +29,11 @@
       <!-- Main Container -->
       <main id="main-container">
 
-        <div class="row">
-          <% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>
-          <% if flash[:alert] %><div class='alert alert-warning'><%= alert %></div><% end %>
+        <div class="row" style="padding:0 20px;">
+          <div class="col-xs-12">
+            <% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>
+            <% if flash[:alert] %><div class='alert alert-danger'><%= alert %></div><% end %>
+          </div>
         </div><!--/row-->
         <%= yield %>
 

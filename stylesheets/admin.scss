@@ -5,9 +5,16 @@
 * require_directory ./admin
 *= require font-awesome
 *= require bootstrap-datepicker3
+*= require select2
 *= require select2-bootstrap
 */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datetimepicker";
+
+/*後台 datetimepicker 不會被 datepicker input 遮住 */
+.bootstrap-datetimepicker-widget{
+  z-index: 1052;
+}
+/*後台 datetimepicker 不會被 datepicker input 遮住 結束*/
