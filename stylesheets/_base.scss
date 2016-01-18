@@ -113,9 +113,9 @@ img {
   }
 }
 
-::selection { background:#6B4D29; color:#ffffff; }
-::-moz-selection { background:#6B4D29; color:#ffffff; }
-::-webkit-selection { background:#6B4D29; color:#ffffff; }
+::selection { background:$primary-color; color:#ffffff; }
+::-moz-selection { background:$primary-color; color:#ffffff; }
+::-webkit-selection { background:$primary-color; color:#ffffff; }
 
 .ml-container {
   width: 970px!important;
