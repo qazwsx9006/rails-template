@@ -1,8 +1,7 @@
 # coding: utf-8
-<% if namespaced? -%>
 <% @controller_class_path.size > 1 ? admin_path = @controller_class_path[0] + '_' + @controller_class_path[1] : admin_path = @controller_class_path[0] -%>
+<% if namespaced? -%>
 require_dependency "<%= namespaced_file_path %>/application_controller"
-
 <% end -%>
 <% module_namespacing do -%>
 class <%= controller_class_name %>Controller < AdminController

@@ -173,10 +173,10 @@ directory 'views/admin', 'app/views/admin', :force => true
 
 
 run 'rails g model fb_meta key:string description:string title:string image:string'
-run 'rails g scaffold_controller admins/fb_meta key:string description:string title:string image:string --model-name=fb_meta'
+run 'rails g scaffold_controller admins::fb_meta key:string description:string title:string image:string --model-name=fb_meta'
 gsub_file 'app/models/fb_metum.rb',/end/,"  mount_uploader :image, FbMetaUploader\nend"
 run 'rails g model site_block key:string content:text note:string'
-run 'rails g scaffold_controller admins/site_block key:string content:text note:string --model-name=fb_meta'
+run 'rails g scaffold_controller admins::site_block key:string content:text note:string --model-name=fb_meta'
 generate('annotate:install')
 
 run 'bundle install'
