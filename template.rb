@@ -112,6 +112,7 @@ rake 'db:seed'
 # add auth to default app controller
 copy_file 'controllers/application_controller.rb', 'app/controllers/application_controller.rb', :force => true
 copy_file 'controllers/admin_controller.rb', 'app/controllers/admin_controller.rb', :force => true
+copy_file 'controllers/page_controller.rb', 'app/controllers/page_controller.rb', :force => true
 
 # Generate session migration
 generate('active_record:session_migration')
@@ -132,6 +133,8 @@ gsub_file 'config/routes.rb', /devise_for :admins/, "get 'admins' => 'admin#inde
 # Copy the custom controller
 copy_file 'controllers/admins/sessions_controller.rb', 'app/controllers/admins/sessions_controller.rb', :force => true
 copy_file 'controllers/concerns/admin_devise.rb', 'app/controllers/concerns/admin_devise.rb', :force => true
+copy_file 'helpers/admin_helper.rb', 'app/helpers/admin_helper.rb', :force => true
+
 
 # devise layout
 gsub_file 'app/views/devise/sessions/new.html.erb', /f.input :email, required: false, autofocus: true/, 'f.input :email, required: false, autofocus: true, input_html: {class: "form-control"} '
@@ -170,6 +173,8 @@ directory 'views/admin', 'app/views/admin', :force => true
 
 run 'rails g model fb_meta key:string description:string title:string image:string'
 run 'rails g scaffold_controller admins/fb_meta key:string description:string title:string image:string --model-name=fb_meta'
+run 'rails g model site_block key:string content:text note:string'
+run 'rails g scaffold_controller admins/site_block key:string content:text note:string --model-name=fb_meta'
 generate('annotate:install')
 
 run 'bundle install'

@@ -8,6 +8,14 @@ class AdminController < ActionController::Base
   def index
   end
 
+  def delete_image(record,arr)
+    arr.each do |t|
+      token = 'remove_' + t 
+      delete_method = 'remove_' + t + '!'
+      record.send(delete_method) if params[token.to_sym] == 'true'
+    end
+  end
+
   def search_key(object,*argv)
     argv = *argv
     search_text_column = []
