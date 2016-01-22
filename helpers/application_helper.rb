@@ -1,4 +1,9 @@
 module ApplicationHelper
+
+  def allow_no_tag(str)
+    sanitize( str ,tags: %w(), attributes: %w() )
+  end
+
   def javascript_embed_file(file)
     raw('<script>' + Rails.application.assets.find_asset(file + '.js').source + '</script>')
   end

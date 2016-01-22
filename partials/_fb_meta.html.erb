@@ -25,7 +25,7 @@
     <meta property="og:image" content="<%= image_url(Settings.fb_og["image"]) %>"/>
   <% end %>
 
-  <meta property="og:description" content="<%= @fb_og["fb_description"] || @fb_og["description"] || @meta["description"] ||  Settings.fb_og["description"] %>"/>
+  <meta property="og:description" content="<%= allow_no_tag(@fb_og["fb_description"] || @fb_og["description"] || @meta["description"] ||  Settings.fb_og["description"])%>"/>
   <meta property="og:site_name" content="<%= Settings.name %>"/>
   <link rel="canonical" href="<%= request.original_url %>"/>
 
