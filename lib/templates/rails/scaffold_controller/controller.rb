@@ -1,5 +1,6 @@
 # coding: utf-8
 <% if namespaced? -%>
+<% @controller_class_path.size > 1 ? admin_path = @controller_class_path[0] + '_' + @controller_class_path[1] : admin_path = @controller_class_path[0] -%>
 require_dependency "<%= namespaced_file_path %>/application_controller"
 
 <% end -%>
@@ -40,7 +41,7 @@ class <%= controller_class_name %>Controller < AdminController
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
 
     if @<%= orm_instance.save %>
-      redirect_to admins_<%= singular_table_name %>_path(@<%= singular_table_name %>.id), notice: t('admin.<%= singular_table_name %>.<%= singular_table_name %>') + t('admin.created_done')
+      redirect_to <%= admin_path %>_<%= singular_table_name %>_path(@<%= singular_table_name %>.id), notice: t('admin.<%= singular_table_name %>.<%= singular_table_name %>') + t('admin.created_done')
     else
       render action: 'new'
     end
@@ -49,7 +50,7 @@ class <%= controller_class_name %>Controller < AdminController
   # PATCH/PUT /admins<%= route_url %>/1
   def update
     if @<%= orm_instance.update("#{singular_table_name}_params") %>
-      redirect_to admins_<%= singular_table_name %>_path, notice: t('admin.<%= singular_table_name %>.<%= singular_table_name %>') + t('admin.updated_done')
+      redirect_to <%= admin_path %>_<%= singular_table_name %>_path, notice: t('admin.<%= singular_table_name %>.<%= singular_table_name %>') + t('admin.updated_done')
     else
       render action: 'edit'
     end
@@ -58,7 +59,7 @@ class <%= controller_class_name %>Controller < AdminController
   # DELETE /admins<%= route_url %>/1
   def destroy
     @<%= orm_instance.destroy %>
-    redirect_to admins_<%= table_name %>_path, notice: t('admin.<%= singular_table_name %>.<%= singular_table_name %>') + t('admin.deleted_done')
+    redirect_to <%= admin_path %>_<%= table_name %>_path, notice: t('admin.<%= singular_table_name %>.<%= singular_table_name %>') + t('admin.deleted_done')
   end
 
   private

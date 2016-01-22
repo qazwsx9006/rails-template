@@ -1,3 +1,4 @@
+<% @controller_class_path.size > 1 ? admin_path = @controller_class_path[0] + '_' + @controller_class_path[1] : admin_path = @controller_class_path[0] -%>
 <%%= form_for([:admins,@<%= singular_table_name %>], :html => {:class => 'form-horizontal push-10-t push-10', :role => 'form'} ) do |f| %>
   <%% if @<%= singular_table_name %>.errors.any? %>
     <div id="row">
@@ -52,7 +53,7 @@
   <div class="form-group">
     <div class="col-xs-12">
       <%%= f.submit "#{t('admin.submit')}", :class => 'btn btn-primary' %>
-      <%%= link_to t('admin.cancel'), admins_<%= index_helper %>_path, :class => 'btn btn-default' %>
+      <%%= link_to t('admin.cancel'), <%= admin_path %>_<%= index_helper %>_path, :class => 'btn btn-default' %>
     </div>
   </div>
 <%% end %>

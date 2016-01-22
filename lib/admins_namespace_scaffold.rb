@@ -6,12 +6,24 @@ require 'pry'
 # $ruby lib/admins_sacffold_controller.rb
 # 待修：view內，欄位相關不會生成。  controller內 parameter "white list" through. 不會生成。
 
+
+
+
+  #binding.pry
+
 puts "controller name ?   \n"
 name = gets.chomp.downcase
 if name.gsub(" ","").length == 0
   #name 必填
   puts "you can't skip this."
 else
+
+  #0.5. 輸入namespace
+  puts "\n 請輸入namespace \n"
+  namespace = gets.chomp.downcase
+  puts "失敗 \n" unless namespace.gsub(" ","").length > 0
+
+
   #1.建立model
   puts "\ninsert model column:type     ex(title:string name:string)      --you can skip this step by input nothing\n"
   columns = gets.chomp.downcase
@@ -24,37 +36,46 @@ else
   end
 
 
+
   #2.建立admin底下的 controller
   if name.gsub(" ","").length > 0
     if columns.gsub(" ","").length > 0
-      controller_command = "rails g scaffold_controller admins/#{name} #{columns} --model-name=#{name.capitalize}"
+      controller_command = "rails g scaffold_controller admins::#{namespace}::#{name} #{columns} --model-name=#{name.capitalize} "
     else
-      controller_command = "rails g scaffold_controller admins/#{name} --model-name=#{name.capitalize}"
+      controller_command = "rails g scaffold_controller admins::#{namespace}::#{name} --model-name=#{name.capitalize}"
     end
     system(controller_command)
   else
     puts "you skip generate controller.\n"
   end
 
-  if columns.gsub(" ","").length > 0
-    model_command = "rails g model #{name} #{columns}"
-    system(model_command)
-  else
-    puts "you skip genera model.\n"
-  end
 
-  #3 建立 route 
+  #3 建立 route
   route_file = File.new('config/routes.rb','r')
-  route_data = route_file.read.split("\n")
+  unsplit_data = route_file.read
+  route_data = unsplit_data.split("\n")
   route_file.close
-  route_data.each_with_index do |line,index|
-    if line.gsub(/\s+/,"") == 'namespace:adminsdo'
-      @place = index 
-      break 
+  if unsplit_data.gsub(/\s+/,"").include?("namespace:#{namespace}do")
+    route_data.each_with_index do |line,index|
+      if line.gsub(/\s+/,"") == "namespace:#{namespace}do"
+        @place = index
+        break
+      end
     end
+    route_data.insert(@place+1,"        resources :#{name.pluralize}")
+  else 
+    route_data.each_with_index do |line,index|
+      if line.gsub(/\s+/,"") == 'namespace:adminsdo'
+        @place = index
+        break
+      end
+    end
+    route_data.insert(@place+1,
+      "      namespace :#{namespace} do
+          resources :#{name.pluralize}
+      end"
+      )
   end
-  route_data.insert(@place+1,"      resources :#{name.pluralize}")
-
   File.open('config/routes.rb','w') do |tar|
     route_data.each do |line|
       tar << line

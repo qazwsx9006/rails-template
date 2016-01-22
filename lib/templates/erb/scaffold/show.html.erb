@@ -1,3 +1,4 @@
+<% @controller_class_path.size > 1 ? admin_path = @controller_class_path[0] + '_' + @controller_class_path[1] : admin_path = @controller_class_path[0] -%>
 <!-- Page Header -->
 <div class="content bg-gray-lighter hidden-print">
     <div class="row items-push">
@@ -38,10 +39,10 @@
             <!-- Action -->
             <hr class="hidden-print">
             <div class="text-center push-30-t push-30 hidden-print">
-              <%%= link_to t('admin.back'), admins_<%= index_helper %>_path, :class => 'btn btn-default' %>
-              <%%= link_to t('admin.edit'), edit_admins_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn btn-default' %>
-              <%%= link_to t('admin.delete'), admins_<%= singular_table_name %>_path(@<%= singular_table_name %>), method: :delete, data: { confirm: t('admin.confirm_delete') }, :class => 'btn btn-danger' %>
-              <%%= link_to t('admin.new') + t('admin.<%= singular_table_name %>.<%= singular_table_name %>'), new_admins_<%= singular_table_name %>_path, :class => 'btn btn-primary' %>
+              <%%= link_to t('admin.back'), <%= admin_path %>_<%= index_helper %>_path, :class => 'btn btn-default' %>
+              <%%= link_to t('admin.edit'), edit_<%= admin_path %>_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn btn-default' %>
+              <%%= link_to t('admin.delete'), <%= admin_path %>_<%= singular_table_name %>_path(@<%= singular_table_name %>), method: :delete, data: { confirm: t('admin.confirm_delete') }, :class => 'btn btn-danger' %>
+              <%%= link_to t('admin.new') + t('admin.<%= singular_table_name %>.<%= singular_table_name %>'), new_<%= admin_path %>_<%= singular_table_name %>_path, :class => 'btn btn-primary' %>
             </div>
             <!-- END Action -->
         </div>

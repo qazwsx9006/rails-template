@@ -1,3 +1,4 @@
+<% @controller_class_path.size > 1 ? admin_path = @controller_class_path[0] + '_' + @controller_class_path[1] : admin_path = @controller_class_path[0] -%>
 <!-- Page Header -->
 <div class="content bg-gray-lighter">
     <div class="row items-push">
@@ -9,7 +10,7 @@
         <div class="col-sm-5 text-right hidden-xs">
             <ol class="breadcrumb push-10-t">
                 <li></li>
-                <li><a class="link-effect" href="<%%= admins_<%= index_helper %>_path %>"><%%= t('admin.<%= singular_table_name %>.<%= singular_table_name %>') %></a></li>
+                <li><a class="link-effect" href="<%%= <%= admin_path %>_<%= index_helper %>_path %>"><%%= t('admin.<%= singular_table_name %>.<%= singular_table_name %>') %></a></li>
             </ol>
         </div>
     </div>
