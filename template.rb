@@ -118,8 +118,6 @@ copy_file 'uploaders/fb_meta_uploader.rb', 'app/uploaders/fb_meta_uploader.rb', 
 # Generate session migration
 generate('active_record:session_migration')
 
-
-
 # Stores session in a database using Active Record
 gsub_file 'config/initializers/session_store.rb', "Rails.application.config.session_store :cookie_store, key: '_#{name}_session'", 'Rails.application.config.session_store :active_record_store'
 
@@ -176,7 +174,7 @@ directory 'views/admin', 'app/views/admin', :force => true
 
 run 'rails g model fb_meta key:string description:string title:string image:string'
 run 'rails g scaffold_controller admins/fb_meta key:string description:string title:string image:string --model-name=fb_meta'
-gsub_file 'app/models/fb_metum.rb',/end/,"  mount_uploader :image, FormFileUploader\nend"
+gsub_file 'app/models/fb_metum.rb',/end/,"  mount_uploader :image, FbMetaUploader\nend"
 run 'rails g model site_block key:string content:text note:string'
 run 'rails g scaffold_controller admins/site_block key:string content:text note:string --model-name=fb_meta'
 generate('annotate:install')
