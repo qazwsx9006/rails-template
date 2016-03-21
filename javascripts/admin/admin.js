@@ -13,7 +13,7 @@ $( ".delete_btn" ).click(function() {
   }
 });
 
-$(".form-control.image_input").change(function(){
+$(document).on('change','.form-control.image_input',function(){
     var image = $(this).siblings('.preview_image');
     //console.log(image);
     readURL(this,image);
