@@ -160,9 +160,9 @@ gsub_file 'config/environments/development.rb', /application.configure do/, "app
 
 # copy files
 directory 'lib', 'lib', :force => true
-directory 'views/kaminari', 'app/views/kaminari'
+directory 'views/kaminari', 'app/views/kaminari', :force => true
 directory 'locales', 'config/locales', :force => true
-directory 'stylesheets', 'app/assets/stylesheets'
+directory 'stylesheets', 'app/assets/stylesheets', :force => true
 directory 'javascripts', 'app/assets/javascripts', :force => true
 directory 'layouts', 'app/views/layouts', :force => true
 directory 'partials', 'app/views/partials', :force => true
@@ -172,19 +172,20 @@ directory 'public/theme', 'public/theme', :force => true
 directory 'views/admin', 'app/views/admin', :force => true
 
 
+# system setting and site blocks
 run 'rails g model fb_meta key:string description:string title:string image:string'
-run 'rails g scaffold_controller admins::fb_meta key:string description:string title:string image:string --model-name=fb_meta'
 gsub_file 'app/models/fb_metum.rb',/end/,"  mount_uploader :image, FbMetaUploader\nend"
-run 'rails g model site_block key:string content:text note:string'
-run 'rails g scaffold_controller admins::site_block key:string content:text note:string --model-name=fb_meta'
+run 'rails g model site_block meta_key:string content:text note:string'
+run 'rails g model page_block meta_key:string content:text note:string'
+run 'rails g model meta_setting meta_key:string value:text note:string'
+run 'rails g scaffold_controller admins::fb_meta key:string description:string title:string image:string --model-name=fb_meta'
+run 'rails g scaffold_controller admins::site_blocks meta_key:string content:text note:string --model-name=site_block'
+run 'rails g scaffold_controller admins::page_blocks meta_key:string content:text note:string --model-name=page_block'
+run 'rails g scaffold_controller admins::meta_settings meta_key:string value:text note:string --model-name=meta_setting'
 generate('annotate:install')
 
 run 'bundle install'
 run 'rake db:migrate'
-
-# sacffold gen
-# generate('scaffold_controller site_block key:string content:text note:string') # site blocks
-# rake 'db:migrate'
 
 ## Route
 route "root 'page#index'"
@@ -192,6 +193,9 @@ route <<-CODE
 
   namespace :admins do
       resources :fb_meta
+      resources :site_blocks
+      resources :page_blocks
+      resources :meta_settings
   end
 CODE
 

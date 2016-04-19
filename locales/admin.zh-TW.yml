@@ -17,6 +17,20 @@ zh-TW:
     deleted_done: 刪除成功
 
     site_block:
-      key: 系統key(勿改)
+      site_block: 區塊文章
+      meta_key: 系統key(勿改)
       content: 內容
       note: 補充說明
+
+    page_block:
+      page_block: 網站頁面
+      meta_key: 系統Key(勿改)
+      content: 內容
+      note: 補充說明
+
+    meta_setting:
+      meta_setting: 系統設定
+      meta_key: 系統Key(勿改)
+      value: 系統值
+      note: 補充說明
+
